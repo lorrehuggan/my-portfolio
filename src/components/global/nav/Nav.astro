@@ -1,0 +1,26 @@
+---
+import Container from '../container/Container.astro';
+---
+
+<nav class="h-32">
+  <section class="flex container justify-between items-center h-full relative">
+    <div class="flex gap-2">
+      <div
+        class="h-9 w-9 transition-transform ease-[cubic-bezier(.72,.24,.66,1.61)] duration-300 bg-accent-400 hover:rotate-45 rounded-full"
+      >
+      </div>
+      <span class="uppercase leading-tight text-sm font-bold">
+        development & <br /> design
+      </span>
+    </div>
+    <a
+      href="/"
+      class="center-absolute hidden lg:block text-5xl font-bold leading-tight font-display text-accent-500"
+      >Lorre Huggan
+    </a>
+    <ul class="flex gap-2 uppercase text-sm font-bold">
+      <li><a href="/post">post</a></li>
+      <li><a href="/picks">picks</a></li>
+    </ul>
+  </section>
+</nav>

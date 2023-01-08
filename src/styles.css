@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@font-face {
+  font-family: 'Dellyani';
+  src: url('/fonts/Dellyani.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-6xl font-bold;
+  }
+  h5 {
+    @apply text-2xl font-bold;
+  }
+  p {
+    @apply text-base-700;
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto w-[90%] px-8 lg:px-0 max-w-[1044px];
+  }
+  .center-absolute {
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  }
+  .noise::after {
+    @apply absolute inset-0 w-full h-full;
+    content: '';
+    opacity: 1;
+    background-image: url('/img/noise.png');
+    height: 100%;
+    z-index: -1;
+    mix-blend-mode: overlay;
+  }
+}
+
+@layer utilities {
+  .color-fade {
+    @apply transition-colors duration-300 ease-in-out;
+  }
+}

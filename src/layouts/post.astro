@@ -1,0 +1,56 @@
+---
+import Footer from '../components/global/footer/Footer.astro';
+import Main from '../components/global/main/Main.astro';
+import Nav from '../components/global/nav/Nav.astro';
+import Chips from '../components/post/Chips.astro';
+import MyCard from '../components/post/MyCard.astro';
+import '../styles.css';
+export interface Props {
+  title: string;
+  frontmatter: {
+    title: string;
+    image: string;
+    tags: string;
+    date: string;
+  };
+}
+const { frontmatter } = Astro.props;
+const tags = frontmatter.tags.split(',').map((tag) => tag.trim());
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="keywords"
+      content={`${frontmatter.tags}, ${frontmatter.title}`}
+    />
+    <title>{`Lorre Huggan | ${frontmatter.title}`}</title>
+  </head>
+  <body class="bg-[#f5f1e0] text-base-800">
+    <Nav />
+    <Main>
+      <section class="">
+        <img
+          src={frontmatter.image}
+          class="w-full h-52 object-cover mb-8 rounded-xl shadow-lg"
+        />
+        <div class="flex flex-col justify-between lg:flex-row">
+          <article
+            class="prose max-w-[720px] prose-neutral prose-h1:font-bold prose-h1:text-6xl prose-h1:text-base-800 prose-p:text-base-700 prose-h2:text-base-800 prose-h1:mb-12 prose-a:text-base-900 prose-a:font-bold"
+          >
+            <h1 class="max-w-[720px]">{frontmatter.title}</h1>
+            <Chips tags={tags} />
+            <slot />
+          </article>
+          <MyCard date={frontmatter.date} />
+        </div>
+      </section>
+    </Main>
+    <Footer />
+  </body>
+</html>
