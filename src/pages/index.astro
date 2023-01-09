@@ -1,35 +1,14 @@
 ---
 import About from '../components/home/About.astro';
-import PostCard from '../components/home/PostCard.astro';
+import Heading from '../components/home/Heading.astro';
+import Projects from '../components/home/Projects.astro';
 import Writing from '../components/home/Writing.astro';
 import Layout from '../layouts/home.astro';
-interface Post {
-  title: string;
-  frontmatter: {
-    title: string;
-    date: string;
-    img: string;
-  };
-}
-const posts = await Astro.glob('./post/*.mdx');
 ---
 
 <Layout title="Lorre Huggan | Portfolio">
-  <h1 class="mb-12 text-center">Front-End Developer</h1>
+  <Heading />
   <About />
   <Writing />
-  <div class="flex gap-4 mt-10">
-    <aside class="min-w-[5rem]"></aside>
-    <div class="">
-      <article class="max-w-[575px] space-y-6">
-        <h5>Latest Projects</h5>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt qui
-          impedit consectetur? A inventore, quibusdam omnis aliquid laborum
-          officiis quia autem hic. Tempora sunt tempore possimus quidem natus
-          magni placeat?
-        </p>
-      </article>
-    </div>
-  </div>
+  <Projects />
 </Layout>

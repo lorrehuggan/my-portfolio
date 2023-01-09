@@ -1,0 +1,79 @@
+---
+import ProjectCard from './ProjectCard.astro';
+---
+
+<div class="flex gap-4 mt-10">
+  <div class="space-y-6">
+    <article class="w-[100%] space-y-6">
+      <h5>Projects</h5>
+      <p>
+        I am excited to share with you some of the projects that I have worked
+        on. These projects showcase my skills in a variety of technologies,
+        including HTML, CSS, JavaScript, and various frameworks such as React
+        and Next.js.<br /><br /> I hope you enjoy exploring these projects and get
+        a sense of my passion for building intuitive and visually appealing web applications.
+        <strong>&#8595;</strong>
+      </p>
+    </article>
+    <ProjectCard
+      name="sazaana"
+      url="sazaana.com"
+      href="https://www.sazaana.com/"
+      tools={[
+        'html',
+        'css',
+        'next js',
+        'tailwind',
+        'tanstack query',
+        'redux toolkit',
+      ]}
+    >
+      <p>
+        A web app built with Next.js allows users to search for an artist by
+        name and create a Spotify playlist of recommended tracks from the
+        searched artist.<br /><br /> The app also gives users the option to save
+        the playlist to their Spotify account. This app is convenient for music lovers
+        who want to discover new artists and save their favorite tracks in one place.<br
+        /><br /> It also offers a seamless integration with the Spotify platform,
+        allowing users to access their playlists and saved tracks directly from the
+        app.
+      </p>
+    </ProjectCard>
+    <ProjectCard
+      name="Kleur UI"
+      href="https://kleur-ui.vercel.app/"
+      tools={['html', 'css', 'next js', 'tailwind css', 'zustand']}
+      url="kleurui.com"
+    >
+      <p>
+        A Tailwind color scheme generator for users to quickly and easily create
+        custom color schemes for their web design projects. <br /><br /> The tool
+        uses hex color codes to generate the 10 shades of color that are typically
+        required for a Tailwind theme. These shades can be used for different elements
+        on a website, such as headings, text, backgrounds, and buttons.<br /><br
+        /> The color scheme generator allows users to input a base color and automatically
+        generates the corresponding shades, saving time and effort in the design
+        process. It is a useful tool for both designers and developers who want to
+        create cohesive, visually appealing websites.
+      </p>
+    </ProjectCard>
+    <ProjectCard
+      name="lift-off course"
+      href="https://www.theliftoffcourse.com/"
+      url="liftoffcourse.com"
+      tools={['html', 'css', 'next js', 'tailwind css']}
+    >
+      <p>
+        I built a landing page using Next.js and Tailwind CSS for a company that
+        offers a course to help users turn their content into digital products
+        that earn money.<br /><br /> The page is designed to be visually appealing
+        and easy to navigate, with clear calls to action that encourage users to
+        learn more about the course and sign up. The use of Next.js and Tailwind
+        CSS allowed me to create a fast and responsive page that provides a seamless
+        experience for users on all devices.<br /><br /> Overall, the landing page
+        effectively promotes the company's course and encourages users to take the
+        first step towards turning their content into profitable digital products.
+      </p>
+    </ProjectCard>
+  </div>
+</div>

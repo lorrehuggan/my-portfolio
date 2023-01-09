@@ -1,0 +1,28 @@
+---
+import PostCard from '../components/posts/PostCard.astro';
+import Layout from '../layouts/home.astro';
+const posts = await Astro.glob('../pages/post/*.mdx');
+---
+
+<Layout title="Lorre Huggan | Post">
+  <h1>Posts</h1>
+  <ul class="space-y-8 mt-8">
+    {
+      posts.map((post) => {
+        const { url } = post;
+        const { title, date, tags, image, excerpt } = post.frontmatter;
+
+        return (
+          <PostCard
+            date={date}
+            title={title}
+            tags={tags.split(',').map((tag: string) => tag.trim())}
+            image={image}
+            url={url}
+            excerpt={excerpt}
+          />
+        );
+      })
+    }
+  </ul>
+</Layout>

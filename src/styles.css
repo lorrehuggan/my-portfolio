@@ -12,10 +12,13 @@
 
 @layer base {
   h1 {
-    @apply text-6xl font-bold;
+    @apply text-4xl md:text-6xl font-bold;
   }
   h5 {
     @apply text-2xl font-bold;
+  }
+  h6 {
+    @apply text-xl font-bold;
   }
   p {
     @apply text-base-700;
@@ -24,7 +27,7 @@
 
 @layer components {
   .container {
-    @apply mx-auto w-[90%] px-8 lg:px-0 max-w-[1044px];
+    @apply mx-auto w-[100%] px-8 lg:px-0 max-w-[650px];
   }
   .center-absolute {
     @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;

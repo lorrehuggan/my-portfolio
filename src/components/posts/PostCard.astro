@@ -1,0 +1,27 @@
+---
+import Chips from '../post/Chips.astro';
+
+interface Props {
+  title: string;
+  tags: string[];
+  date: string;
+  image: string;
+  url: string | undefined;
+  excerpt: string;
+}
+const { title, tags, date, image, url, excerpt } = Astro.props as Props;
+---
+
+<div class="w-full flex flex-col items-center gap-4 md:flex-row">
+  <img src={image} class="w-full h-24 object-cover rounded-xl md:w-24" />
+  <div class="flex-1 space-y-2">
+    <a href={url}>
+      <h5>{title}</h5>
+    </a>
+    <p class="text-base-500 text-sm font-mono">{date}</p>
+    <p>{excerpt}</p>
+    <div class="flex items-center gap-4 mt-2">
+      <Chips tags={tags} />
+    </div>
+  </div>
+</div>

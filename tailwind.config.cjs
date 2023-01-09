@@ -33,6 +33,7 @@ module.exports = {
           800: '#3e3d3c',
           900: '#1f1f1e',
         },
+        light: '#f5f1e0',
       },
     },
   },

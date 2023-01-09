@@ -5,6 +5,6 @@ interface Props {
 const { className } = Astro.props;
 ---
 
-<section class={`${className ? className : ''} container pt-16 pb-8`}>
+<section class={`${className ? className : ''} container py-4 md:py-8 h-full`}>
   <slot />
 </section>
