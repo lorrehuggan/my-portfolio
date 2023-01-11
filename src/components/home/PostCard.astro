@@ -17,5 +17,7 @@ const { title, img, date, url } = Astro.props as Props;
   <a href={url}>
     <p class="mt-2 truncate font-bold">{title}</p>
   </a>
-  <p class="text-xs mt-2 text-base-700">{`Published: ${date}`}</p>
+  <p class="text-xs mt-2 text-base-700">
+    {new Date(date).toDateString()}
+  </p>
 </div>

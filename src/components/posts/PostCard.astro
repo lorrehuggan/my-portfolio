@@ -18,7 +18,9 @@ const { title, tags, date, image, url, excerpt } = Astro.props as Props;
     <a href={url}>
       <h5>{title}</h5>
     </a>
-    <p class="text-base-500 text-sm font-mono">{date}</p>
+    <p class="text-base-500 text-sm font-mono">
+      {new Date(date).toDateString()}
+    </p>
     <p>{excerpt}</p>
     <div class="flex items-center gap-4 mt-2">
       <Chips tags={tags} />

@@ -8,21 +8,27 @@ const posts = await Astro.glob('../pages/post/*.mdx');
   <h1>Posts</h1>
   <ul class="space-y-8 mt-8">
     {
-      posts.map((post) => {
-        const { url } = post;
-        const { title, date, tags, image, excerpt } = post.frontmatter;
+      posts
+        .sort((a, b) => {
+          const aDate = new Date(a.frontmatter.date);
+          const bDate = new Date(b.frontmatter.date);
+          return bDate.getTime() - aDate.getTime();
+        })
+        .map((post) => {
+          const { url } = post;
+          const { title, date, tags, image, excerpt } = post.frontmatter;
 
-        return (
-          <PostCard
-            date={date}
-            title={title}
-            tags={tags.split(',').map((tag: string) => tag.trim())}
-            image={image}
-            url={url}
-            excerpt={excerpt}
-          />
-        );
-      })
+          return (
+            <PostCard
+              date={date}
+              title={title}
+              tags={tags.split(',').map((tag: string) => tag.trim())}
+              image={image}
+              url={url}
+              excerpt={excerpt}
+            />
+          );
+        })
     }
   </ul>
 </Layout>
