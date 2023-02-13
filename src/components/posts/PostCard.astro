@@ -13,10 +13,10 @@ const { title, tags, date, image, url, excerpt } = Astro.props as Props;
 ---
 
 <div class="w-full flex flex-col items-center gap-4 md:flex-row">
-  <img src={image} class="w-full h-24 object-cover rounded-xl md:w-24" />
+  <!-- <img src={image} class="w-full h-full object-cover rounded-xl md:w-24" /> -->
   <div class="flex-1 space-y-2">
     <a href={url}>
-      <h5>{title}</h5>
+      <h5 class="color-fade hover:text-accent-500 inline">{title}</h5>
     </a>
     <p class="text-base-500 text-sm font-mono">
       {new Date(date).toDateString()}

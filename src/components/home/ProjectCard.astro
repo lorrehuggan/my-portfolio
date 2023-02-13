@@ -9,12 +9,12 @@ interface Props {
 const { name, url, tools, href, github } = Astro.props as Props;
 ---
 
-<div class="px-4 pb-6 border-b-[1px] border-base-800/20 w-full space-y-4">
-  <h6>
+<div class="px-8 bg-neutral-300/20 py-6 rounded-xl w-full space-y-4">
+  <h4>
     <a class="color-fade hover:text-accent-500 capitalize" href={href}>
       {name}
     </a>
-  </h6>
+  </h4>
   <div class="flex gap-2 text-xs uppercase flex-wrap">
     <span class="font-bold text-base-500">Tools:</span>
     {tools.map((tool) => <span class="font-bold text-base-500">{tool}</span>)}

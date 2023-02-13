@@ -1,6 +1,8 @@
 ---
 import Container from '../container/Container.astro';
 import Socials from '../Socials.astro';
+
+const year = new Date().getFullYear();
 ---
 
 <footer class="h-12">
@@ -8,7 +10,7 @@ import Socials from '../Socials.astro';
     <Socials />
     <div class="flex items-center gap-1">
       <span>&copy;</span>
-      <p class="text-sm">Lorre Huggan 2022</p>
+      <p class="text-sm">{`Lorre Huggan ${year}`}</p>
     </div>
   </section>
 </footer>

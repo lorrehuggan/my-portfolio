@@ -12,16 +12,34 @@
 
 @layer base {
   h1 {
-    @apply text-4xl md:text-6xl font-bold;
+    font-size: 5.9rem;
+    line-height: 1.1;
+    font-weight: 700;
+  }
+  h2 {
+    font-size: 3.7rem;
+    line-height: 1.1;
+    font-weight: 700;
+  }
+  h3 {
+    font-size: 2.2rem;
+    line-height: 1.1;
+    font-weight: 700;
+  }
+  h4 {
+    font-size: 1.4rem;
+    line-height: 1.1;
+    font-weight: 700;
   }
   h5 {
-    @apply text-2xl font-bold;
-  }
-  h6 {
-    @apply text-xl font-bold;
+    font-size: 1.1rem;
+    line-height: 1.1;
+    font-weight: 700;
   }
   p {
-    @apply text-base-700;
+    font-size: 1.05rem;
+    line-height: 1.4;
+    font-weight: 500;
   }
 }
 

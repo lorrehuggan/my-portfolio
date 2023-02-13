@@ -24,13 +24,9 @@ const { frontmatter } = Astro.props;
     <Nav />
     <Main>
       <section class="">
-        <img
-          src={frontmatter.image}
-          class="w-full h-52 object-cover mb-8 rounded-xl shadow-lg"
-        />
         <div class="flex flex-col justify-between lg:flex-row">
           <article
-            class="prose max-w-[650px] prose-neutral prose-h1:font-bold prose-h1:text-4xl md:prose-h1:text-6xl prose-h1:text-base-800 prose-p:text-base-700 prose-h2:text-base-800 prose-h1:mb-12 prose-a:text-base-900 prose-a:font-bold"
+            class="prose mb-10 max-w-[650px] prose-neutral prose-h1:font-bold prose-h1:text-4xl md:prose-h1:text-6xl prose-h1:text-base-800 prose-p:text-base-700 prose-h2:text-base-800 prose-h1:mb-12 prose-a:text-base-900 prose-a:font-bold prose-hr:border-base-800"
           >
             <header>
               <h1 class="max-w-[650px] text-center">{frontmatter.title}</h1>

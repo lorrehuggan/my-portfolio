@@ -10,14 +10,18 @@ interface Props {
 const { title, img, date, url } = Astro.props as Props;
 ---
 
-<div class="min-w-[15rem]">
-  <picture class="">
-    <img src={img} alt={title} class="w-60 h-60 object-cover rounded-lg" />
-  </picture>
-  <a href={url}>
-    <p class="mt-2 truncate font-bold">{title}</p>
-  </a>
-  <p class="text-xs mt-2 text-base-700">
-    {new Date(date).toDateString()}
-  </p>
+<div
+  class="min-w-[15rem] aspect-[2.25/3.5] relative rounded-lg overflow-hidden"
+>
+  <div class="absolute z-30 top-2 left-0 w-full px-2">
+    <p class="text-base-50 text-sm mb-2">{new Date(date).toDateString()}</p>
+    <h3 class="text-4xl font-bold text-base-50">{title}</h3>
+  </div>
+  <img src={img} alt={title} class="w-full h-full object-cover" />
+  <a
+    href={url}
+    class="color-fade absolute z-30 px-3 py-2 bg-neutral-50 bottom-4 left-4 text-xs font-bold rounded shadow hover:bg-neutral-300"
+    >Read article</a
+  >
+  <div class="absolute inset-0 w-full h-full bg-black/30"></div>
 </div>

@@ -1,0 +1,50 @@
+---
+layout: ../../layouts/post.astro
+title: How to use generics in TypeScript
+date: 2023-02-05
+tags: 'tailwind, CSS, design, interface'
+image: https://images.pexels.com/photos/281260/pexels-photo-281260.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+excerpt: Tailwind CSS is a utility-first CSS framework for rapidly building custom user interfaces.
+---
+
+---
+
+TypeScript is a popular programming language that provides static typing and class-based object-oriented programming features. Generics in TypeScript is a powerful feature that allows developers to write reusable code by creating components that can work with different types.
+
+To use generics in TypeScript, we start by defining a type parameter that can be used in place of specific types. This allows us to write generic functions, classes, and interfaces that can work with different data types.
+
+Let's take a look at an example of how to use generics in TypeScript:
+
+```typescript
+function printArray<T>(array: T[]): void {
+  for (const item of array) {
+    console.log(item);
+  }
+}
+
+printArray<string>(['apple', 'banana', 'cherry']);
+```
+
+In this example, we define a generic function called printArray that takes an array of type T as its parameter. We then use a for...of loop to iterate over the array and log each item to the console.
+
+To call the printArray function, we provide a type argument of string in the angle brackets. This tells TypeScript to infer the type of the array parameter as an array of strings.
+
+Generics can also be used with classes and interfaces. Here's an example of a generic interface:
+
+```typescript
+interface Pair<T, U> {
+  first: T;
+  second: U;
+}
+
+const pair: Pair<number, string> = {
+  first: 42,
+  second: 'hello',
+};
+```
+
+In this example, we define a generic interface called Pair that takes two type parameters, T and U. The interface has two properties, first and second, that can hold values of those types.
+
+To create an instance of the Pair interface, we provide type arguments of number and string in the angle brackets. This tells TypeScript to infer the types of the first and second properties as a number and a string, respectively.
+
+In conclusion, generics in TypeScript provide a powerful tool for writing reusable code that can work with different types. By using generic functions, classes, and interfaces, developers can create components that are more flexible and easier to maintain.
