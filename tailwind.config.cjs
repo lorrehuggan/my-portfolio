@@ -34,6 +34,8 @@ module.exports = {
           900: '#1f1f1e',
         },
         light: '#f5f1e0',
+        sun: '#f9c91f',
+        peach: '#fe4057',
       },
     },
   },
