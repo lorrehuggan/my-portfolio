@@ -21,6 +21,6 @@ export default defineConfig({
     }),
     mdx(),
   ],
-  output: 'static',
+  output: 'server',
   adapter: vercel(),
 });
