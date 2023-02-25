@@ -7,7 +7,6 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
-import vercel from '@astrojs/vercel/serverless';
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,6 +20,4 @@ export default defineConfig({
     }),
     mdx(),
   ],
-  output: 'server',
-  adapter: vercel(),
 });
