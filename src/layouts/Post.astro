@@ -1,10 +1,15 @@
 ---
+import { getCollection } from 'astro:content';
 import Footer from '../components/global/footer/Footer.astro';
 import Main from '../components/global/main/Main.astro';
 import Nav from '../components/global/nav/Nav.astro';
+import PostCard from '../components/home/PostCard.astro';
 import '../styles.css';
 
 const { frontmatter } = Astro.props;
+const posts = await getCollection('posts', ({ data }) => {
+  return data.published && data.title !== frontmatter.title;
+});
 ---
 
 <!DOCTYPE html>
@@ -35,6 +40,29 @@ const { frontmatter } = Astro.props;
           </article>
         </div>
       </section>
+      {
+        posts.length > 0 && (
+          <section class="mt-8">
+            <h4>More to read...</h4>
+            <div class="flex gap-4 mt-8 w-[100%] overflow-x-scroll">
+              {posts
+                .sort((a, b) => {
+                  const aDate = new Date(a.data.publishedDate);
+                  const bDate = new Date(b.data.publishedDate);
+                  return bDate.getTime() - aDate.getTime();
+                })
+                .map((post) => (
+                  <PostCard
+                    date={post.data.publishedDate}
+                    img={post.data.image.src}
+                    title={post.data.title}
+                    url={`post/${post.slug}`}
+                  />
+                ))}
+            </div>
+          </section>
+        )
+      }
     </Main>
     <Footer />
   </body>
