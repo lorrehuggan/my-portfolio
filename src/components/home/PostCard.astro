@@ -1,5 +1,6 @@
 ---
 import Chips from '../post/Chips.astro';
+import { Image, Picture } from '@astrojs/image/components';
 
 interface Props {
   title: string;
@@ -17,7 +18,15 @@ const { title, img, date, url } = Astro.props as Props;
     <p class="text-base-50 text-sm mb-2">{new Date(date).toDateString()}</p>
     <h3 class="text-3xl font-bold text-base-50">{title}</h3>
   </div>
-  <img src={img} alt={title} class="w-full h-full object-cover" />
+  <Image
+    height={372}
+    width={240}
+    aspectRatio={2.25 / 3.5}
+    fit="fill"
+    format="webp"
+    src={img}
+    alt={title}
+  />
   <a
     href={url}
     class="color-fade absolute z-50 px-3 py-2 bg-neutral-50 bottom-4 left-4 text-xs font-bold rounded shadow hover:bg-neutral-300"
