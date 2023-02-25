@@ -24,7 +24,7 @@ const posts = await getCollection('posts', ({ data }) => {
         experiences. <strong>&#8595;</strong>
       </p>
     </article>
-    <div class="flex gap-4 mt-8 w-[100%] overflow-x-scroll">
+    <div class="no-scroll-bar flex gap-4 mt-8 w-[100%] overflow-x-scroll">
       {
         posts
           .sort((a, b) => {
