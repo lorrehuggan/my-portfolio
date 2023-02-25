@@ -1,5 +1,6 @@
 ---
 import PostCard from './PostCard.astro';
+import { getCollection } from 'astro:content';
 
 interface Post {
   title: string;
@@ -9,7 +10,9 @@ interface Post {
     img: string;
   };
 }
-const posts = await Astro.glob('../../pages/post/*.mdx');
+const posts = await getCollection('posts', ({ data }) => {
+  return data.published;
+});
 ---
 
 <div class="flex gap-4 mt-10">
@@ -25,16 +28,16 @@ const posts = await Astro.glob('../../pages/post/*.mdx');
       {
         posts
           .sort((a, b) => {
-            const aDate = new Date(a.frontmatter.date);
-            const bDate = new Date(b.frontmatter.date);
+            const aDate = new Date(a.data.publishedDate);
+            const bDate = new Date(b.data.publishedDate);
             return bDate.getTime() - aDate.getTime();
           })
           .map((post) => (
             <PostCard
-              date={post.frontmatter.date}
-              img={post.frontmatter.image}
-              title={post.frontmatter.title}
-              url={post.url}
+              date={post.data.publishedDate}
+              img={post.data.image.src}
+              title={post.data.title}
+              url={`post/${post.slug}`}
             />
           ))
       }

@@ -66,3 +66,26 @@
     @apply transition-colors duration-300 ease-in-out;
   }
 }
+
+.mainGradient {
+  background: rgb(249, 201, 31);
+  background: -moz-linear-gradient(
+    223deg,
+    rgba(249, 201, 31, 1) 0%,
+    rgba(254, 64, 87, 1) 54%,
+    rgba(247, 28, 155, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    223deg,
+    rgba(249, 201, 31, 1) 0%,
+    rgba(254, 64, 87, 1) 54%,
+    rgba(247, 28, 155, 1) 100%
+  );
+  background: linear-gradient(
+    223deg,
+    rgba(249, 201, 31, 1) 0%,
+    rgba(254, 64, 87, 1) 54%,
+    rgba(247, 28, 155, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f9c91f",endColorstr="#f71c9b",GradientType=1);
+}

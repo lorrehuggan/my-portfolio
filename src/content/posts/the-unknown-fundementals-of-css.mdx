@@ -1,0 +1,148 @@
+---
+title: The Unknown Fundementals of CSS
+publishedDate: 2020-02-05
+published: true
+tags: [tailwind, CSS, design, interface]
+image:
+  {
+    src: '/img/the-unknown-fundementals-of-css.jpg',
+    alt: 'Tailwind Tips For Pros',
+  }
+excerpt: CSS is a complex technology that requires a deep understanding of its many features and properties to use it effectively. By learning these lesser-known fundamentals, you can improve your skills as a web developer and create more efficient and effective web pages.
+---
+
+Hello there, fellow web enthusiasts! Have you ever felt like you're only scratching the surface of CSS? Maybe you've been using it for a while and have a pretty good grasp of the basics, but you still feel like there's so much more to learn.
+
+Well, fear not! In this blog post, we're going to dive into the unknown fundamentals of CSS and explore some of the lesser-known features and techniques that can take your web design skills to the next level. So sit back, relax, and get ready to expand your CSS horizons!
+
+## 1. Inheritance
+
+In CSS, properties can be inherited by child elements from their parent elements. Understanding which properties are inherited and which are not can help simplify your CSS code and make it more efficient.
+
+Let's say you have the following HTML markup:
+
+```html
+<div class="container">
+  <p class="intro">Welcome to my website!</p>
+  <p>Here's some more text.</p>
+</div>
+```
+
+And you've styled the .intro class like this:
+
+```css
+.intro {
+  font-size: 24px;
+  color: blue;
+}
+```
+
+Now, because CSS has inheritance, any properties that are not explicitly defined for the second p element will inherit from its parent element, which in this case is the .container class. So, if you add the following styles to .container:
+
+```css
+.container {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+```
+
+The second p element will inherit those styles, resulting in a font family of Arial and a line height of 1.5.
+
+Inheritance can save you a lot of time and code when styling your web pages, as you can define styles for parent elements that will be inherited by all their child elements, rather than having to repeat those styles for each individual element.
+
+## 2. Specificity
+
+In CSS, the specificity of a selector is a measure of how specific it is. The more specific a selector is, the higher its priority is when it comes to determining which styles are applied to an element.
+
+For example, if you have the following CSS:
+
+```css
+p {
+  color: red;
+}
+.intro {
+  color: blue;
+}
+```
+
+The .intro class will override the color property of the p element because it is more specific. The .intro class is more specific than the p element because it is a class selector, whereas the p element is a type selector.
+
+The specificity of a selector is determined by the number of different types of selectors it contains. The more different types of selectors it contains, the more specific it is. The different types of selectors are:
+
+- Type selectors (e.g. p)
+- Class selectors (e.g. .intro)
+- ID selectors (e.g. #main)
+- Attribute selectors (e.g. [type="text"])
+- Pseudo-classes (e.g. :hover)
+- Pseudo-elements (e.g. ::before)
+
+The more different types of selectors a selector contains, the more specific it is. So, for example, the following selector is more specific than the previous one:
+
+```css
+p.intro {
+  color: blue;
+}
+```
+
+The selector above contains two different types of selectors: a type selector (p) and a class selector (.intro). So, it is more specific than the selector below, which only contains one type of selector (a class selector):
+
+```css
+.intro {
+  color: blue;
+}
+```
+
+## 3. The Cascade
+
+The cascade is the process of combining different stylesheets and resolving any conflicts between different CSS rules and declarations. It determines which styles are ultimately applied to an element.
+
+The cascade is based on the following principles:
+
+- **Specificity** - The more specific a selector is, the higher its priority is when it comes to determining which styles are applied to an element.
+
+- **Source order** - If two selectors are equally specific, the one that comes later in the source code will be applied to the element.
+
+- **Importance** - If two selectors are equally specific and come from the same stylesheet, the one that is declared as !important will be applied to the element.
+
+## 4. The Display Property
+
+The display property is used to turn an inline element into a block-level element or vice versa, and can also be used to hide an element.
+
+The display property can have one of the following values:
+
+- **block** - Displays an element as a block element (which takes up the full width of the page).
+
+- **inline** - Displays an element as an inline element (which only takes up as much width as necessary).
+
+- **inline-block** - Displays an element as an inline-level block container. The element itself is formatted as an inline element, but you can apply height and width values to it.
+
+- **none** - Hides an element.
+
+## 5. Pseudo-classes and Pseudo-elements
+
+Pseudo-classes are keywords that you can add to selectors to target specific states of an element. For example, you can use the :hover pseudo-class to target a link when the user hovers over it with their mouse.
+
+```css
+a:hover {
+  color: red;
+}
+```
+
+In this example, the a:hover selector targets any a element that the user is currently hovering over with their mouse, and changes its color to red.
+
+Pseudo-elements are keywords that you can add to selectors to target specific parts of an element. For example, you can use the ::before pseudo-element to insert content before an element.
+
+```css
+p::before {
+  content: 'Note: ';
+  font-weight: bold;
+}
+```
+
+In this example, the p::before selector targets any p element and adds the text "Note: " before the content of the paragraph, in bold font.
+
+Note that in CSS3, some pseudo-elements use the double colon syntax (::) instead of the single colon syntax (:) used by pseudo-classes.
+
+And there you have it, folks! We've explored some of the lesser-known fundamentals of CSS, and hopefully you've learned a thing or two that will help take your web design skills to the next level.
+
+Remember, CSS is a constantly evolving language, so it's important to stay curious and keep learning. Don't be afraid to experiment and try out new techniques – who knows, you might just discover the next big thing in web design! Thanks for reading, and happy styling!

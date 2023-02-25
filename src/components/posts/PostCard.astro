@@ -4,12 +4,11 @@ import Chips from '../post/Chips.astro';
 interface Props {
   title: string;
   tags: string[];
-  date: string;
-  image: string;
+  date: Date;
   url: string | undefined;
   excerpt: string;
 }
-const { title, tags, date, image, url, excerpt } = Astro.props as Props;
+const { title, tags, date, url, excerpt } = Astro.props as Props;
 ---
 
 <div class="w-full flex flex-col items-center gap-4 md:flex-row">

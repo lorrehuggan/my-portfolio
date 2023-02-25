@@ -1,7 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
 import PostCard from '../components/posts/PostCard.astro';
 import Layout from '../layouts/home.astro';
-const posts = await Astro.glob('../pages/post/*.mdx');
+const posts = await getCollection('posts', ({ data }) => {
+  return data.published;
+});
 ---
 
 <Layout title="Lorre Huggan | Post">
@@ -10,21 +13,19 @@ const posts = await Astro.glob('../pages/post/*.mdx');
     {
       posts
         .sort((a, b) => {
-          const aDate = new Date(a.frontmatter.date);
-          const bDate = new Date(b.frontmatter.date);
+          const aDate = new Date(a.data.publishedDate);
+          const bDate = new Date(b.data.publishedDate);
           return bDate.getTime() - aDate.getTime();
         })
         .map((post) => {
-          const { url } = post;
-          const { title, date, tags, image, excerpt } = post.frontmatter;
+          const { title, publishedDate, tags, excerpt } = post.data;
 
           return (
             <PostCard
-              date={date}
+              date={publishedDate}
               title={title}
-              tags={tags.split(',').map((tag: string) => tag.trim())}
-              image={image}
-              url={url}
+              tags={tags.map((tag: string) => tag.trim())}
+              url={`/post/${post.slug}`}
               excerpt={excerpt}
             />
           );
