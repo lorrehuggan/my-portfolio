@@ -1,7 +1,35 @@
 ---
-import Home from '../layouts/Home.astro';
+import { getCollection } from 'astro:content';
+import PostCard from '../components/posts/PostCard.astro';
+import Layout from '../layouts/Home.astro';
+const posts = await getCollection('picks', ({ data }) => {
+  return data.published;
+});
 ---
 
-<Home title="Lorre | Picks">
-  <h4>Coming Soon...</h4>
-</Home>
+<Layout title="Lorre Huggan | Post">
+  <h3>Posts</h3>
+  <ul class="space-y-8 mt-8">
+    {
+      posts
+        .sort((a, b) => {
+          const aDate = new Date(a.data.publishedDate);
+          const bDate = new Date(b.data.publishedDate);
+          return bDate.getTime() - aDate.getTime();
+        })
+        .map((post) => {
+          const { title, publishedDate, tags, excerpt } = post.data;
+
+          return (
+            <PostCard
+              date={publishedDate}
+              title={title}
+              tags={tags.map((tag: string) => tag.trim())}
+              url={`/picks/${post.slug}`}
+              excerpt={excerpt}
+            />
+          );
+        })
+    }
+  </ul>
+</Layout>

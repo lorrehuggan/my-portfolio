@@ -8,7 +8,7 @@ import Chips from '../components/post/Chips.astro';
 import '../styles.css';
 
 const { frontmatter } = Astro.props;
-const posts = await getCollection('posts', ({ data }) => {
+const picks = await getCollection('picks', ({ data }) => {
   return data.published && data.title !== frontmatter.title;
 });
 ---
@@ -37,48 +37,58 @@ const posts = await getCollection('posts', ({ data }) => {
           >
             <header>
               <h2 class="max-w-[650px]">{frontmatter.title}</h2>
+              <a
+                style={{ color: '#9a9996' }}
+                class="text-sm text-accent-500"
+                href={frontmatter.url}>{frontmatter.url}</a
+              >
+              <p class="text-base-500 text-sm font-mono">
+                {
+                  `${
+                    new Date(frontmatter.publishedDate)
+                      .toDateString()
+                      .split(' ')[1]
+                  } ${
+                    new Date(frontmatter.publishedDate)
+                      .toDateString()
+                      .split(' ')[2]
+                  } ${
+                    new Date(frontmatter.publishedDate)
+                      .toDateString()
+                      .split(' ')[3]
+                  }`
+                }
+              </p>
+              <div class="flex items-center gap-4 mt-2">
+                <Chips tags={frontmatter.tags} />
+              </div>
             </header>
-            <p class="text-base-500 text-sm font-mono">
-              {
-                `${
-                  new Date(frontmatter.publishedDate)
-                    .toDateString()
-                    .split(' ')[1]
-                } ${
-                  new Date(frontmatter.publishedDate)
-                    .toDateString()
-                    .split(' ')[2]
-                } ${
-                  new Date(frontmatter.publishedDate)
-                    .toDateString()
-                    .split(' ')[3]
-                }`
-              }
-            </p>
-            <div class="flex items-center gap-4 mt-2">
-              <Chips tags={frontmatter.tags} />
-            </div>
             <slot />
+            <a
+              style={{ color: '#9a9996' }}
+              class="text-sm text-accent-500"
+              href={frontmatter.url}>{frontmatter.url}</a
+            >
           </article>
         </div>
       </section>
       {
-        posts.length > 0 && (
+        picks.length > 0 && (
           <section class="mt-8">
             <h4>More to read...</h4>
             <div class="flex gap-4 mt-8 w-[100%] overflow-x-scroll">
-              {posts
+              {picks
                 .sort((a, b) => {
                   const aDate = new Date(a.data.publishedDate);
                   const bDate = new Date(b.data.publishedDate);
                   return bDate.getTime() - aDate.getTime();
                 })
-                .map((post) => (
+                .map((pick) => (
                   <PostCard
-                    date={post.data.publishedDate}
-                    img={post.data.image.src}
-                    title={post.data.title}
-                    url={`${post.slug}`}
+                    date={pick.data.publishedDate}
+                    img={pick.data.image.src}
+                    title={pick.data.title}
+                    url={`${pick.slug}`}
                   />
                 ))}
             </div>

@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import Picks from '../../layouts/Picks.astro';
+import Post from '../../layouts/Post.astro';
+
+export async function getStaticPaths() {
+  const pickEntries = await getCollection('picks');
+  return pickEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+// 2. When it's time to render, you can get the entry directly from the prop
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Picks frontmatter={entry.data}>
+  <Content />
+</Picks>
