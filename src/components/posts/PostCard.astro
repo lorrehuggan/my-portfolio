@@ -22,7 +22,11 @@ const { title, tags, date, url, excerpt } = Astro.props as Props;
     </div>
     <p>{excerpt}</p>
     <p class="text-base-500 text-sm font-mono">
-      {new Date(date).toDateString()}
+      {
+        `${new Date(date).toDateString().split(' ')[1]} ${
+          new Date(date).toDateString().split(' ')[2]
+        } - ${new Date(date).toDateString().split(' ')[3]}`
+      }
     </p>
   </div>
 </div>

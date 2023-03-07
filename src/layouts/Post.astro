@@ -4,6 +4,7 @@ import Footer from '../components/global/footer/Footer.astro';
 import Main from '../components/global/main/Main.astro';
 import Nav from '../components/global/nav/Nav.astro';
 import PostCard from '../components/home/PostCard.astro';
+import Chips from '../components/post/Chips.astro';
 import '../styles.css';
 
 const { frontmatter } = Astro.props;
@@ -17,6 +18,7 @@ const posts = await getCollection('posts', ({ data }) => {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={frontmatter.excerpt} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <meta
@@ -31,11 +33,31 @@ const posts = await getCollection('posts', ({ data }) => {
       <section class="">
         <div class="flex flex-col justify-between lg:flex-row">
           <article
-            class="prose mb-10 max-w-[650px] prose-neutral prose-h1:font-bold prose-h1:text-4xl md:prose-h1:text-6xl prose-h1:text-base-800 prose-p:text-base-700 prose-h2:text-base-800 prose-h1:mb-12 prose-a:text-base-900 prose-a:font-bold prose-hr:border-base-800"
+            class="prose prose-h2:mt-0 mb-10 max-w-[650px] prose-neutral prose-h1:font-bold prose-h1:text-4xl md:prose-h1:text-6xl prose-h1:text-base-800 prose-p:text-base-700 prose-h2:text-base-800 prose-h1:mb-12 prose-a:text-base-900 prose-a:font-bold prose-hr:border-base-800 prose-a:cursor-pointer prose-a:no-underline"
           >
             <header>
-              <h1 class="max-w-[650px]">{frontmatter.title}</h1>
+              <h2 class="max-w-[650px]">{frontmatter.title}</h2>
             </header>
+            <p class="text-base-500 text-sm font-mono">
+              {
+                `${
+                  new Date(frontmatter.publishedDate)
+                    .toDateString()
+                    .split(' ')[1]
+                } ${
+                  new Date(frontmatter.publishedDate)
+                    .toDateString()
+                    .split(' ')[2]
+                } - ${
+                  new Date(frontmatter.publishedDate)
+                    .toDateString()
+                    .split(' ')[3]
+                }`
+              }
+            </p>
+            <div class="flex items-center gap-4 mt-2">
+              <Chips tags={frontmatter.tags} />
+            </div>
             <slot />
           </article>
         </div>
