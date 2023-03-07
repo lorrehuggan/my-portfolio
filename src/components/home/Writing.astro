@@ -42,5 +42,12 @@ const posts = await getCollection('posts', ({ data }) => {
           ))
       }
     </div>
+    {
+      posts.length > 3 && (
+        <div class="mt-4">
+          <a>View More Articles</a>
+        </div>
+      )
+    }
   </div>
 </div>

@@ -64,6 +64,7 @@
 .no-scroll-bar::-webkit-scrollbar {
   display: none;
 }
+
 @layer utilities {
   .color-fade {
     @apply transition-colors duration-300 ease-in-out;

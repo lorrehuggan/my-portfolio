@@ -12,7 +12,7 @@ const { title, img, date, url } = Astro.props as Props;
 ---
 
 <div
-  class="max-w-[15rem] aspect-[2.25/3.5] relative rounded-lg overflow-hidden"
+  class="min-w-[13.5rem] aspect-[2.25/3.5] relative rounded-lg overflow-hidden"
 >
   <div class="absolute z-50 top-2 left-0 w-full px-2">
     <p class="text-base-50 text-sm mb-2">{new Date(date).toDateString()}</p>
@@ -22,7 +22,7 @@ const { title, img, date, url } = Astro.props as Props;
     height={372}
     width={240}
     aspectRatio={2.25 / 3.5}
-    fit="fill"
+    fit="cover"
     format="webp"
     src={img}
     alt={title}
@@ -32,5 +32,8 @@ const { title, img, date, url } = Astro.props as Props;
     class="color-fade absolute z-50 px-3 py-2 bg-neutral-50 bottom-4 left-4 text-xs font-bold rounded shadow hover:bg-neutral-300"
     >Read article</a
   >
-  <div class="absolute inset-0 w-full h-full bg-black/30"></div>
+  <div
+    class="absolute inset-0 w-full h-1/2 bg-gradient-to-b from-black to-transparent"
+  >
+  </div>
 </div>

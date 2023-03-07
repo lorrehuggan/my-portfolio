@@ -1,0 +1,16 @@
+---
+import { Image, Picture } from '@astrojs/image/components';
+
+const { src, alt } = Astro.props;
+---
+
+<Picture
+  widths={[650]}
+  aspectRatio={'3:2'}
+  fit="cover"
+  format="webp"
+  src={src}
+  alt={alt}
+  sizes="(min-width: 1024px) 650px, 100vw"
+  class="rounded-lg"
+/>
