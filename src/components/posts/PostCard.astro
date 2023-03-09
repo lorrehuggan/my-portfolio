@@ -11,16 +11,11 @@ interface Props {
 const { title, tags, date, url, excerpt } = Astro.props as Props;
 ---
 
-<div class="w-full flex flex-col items-center gap-4 md:flex-row">
-  <!-- <img src={image} class="w-full h-full object-cover rounded-xl md:w-24" /> -->
+<div class="w-full flex flex-col gap-4">
   <div class="flex-1 space-y-2">
     <a href={url}>
       <h5 class="color-fade hover:text-accent-500 inline">{title}</h5>
     </a>
-    <div class="flex items-center gap-4 mt-2">
-      <Chips tags={tags} />
-    </div>
-    <p>{excerpt}</p>
     <p class="text-base-500 text-sm font-mono">
       {
         `${new Date(date).toDateString().split(' ')[1]} ${
@@ -28,5 +23,9 @@ const { title, tags, date, url, excerpt } = Astro.props as Props;
         } - ${new Date(date).toDateString().split(' ')[3]}`
       }
     </p>
+    <p>{excerpt}</p>
+    <div class="flex items-center gap-4 mt-2">
+      <Chips tags={tags} />
+    </div>
   </div>
 </div>
