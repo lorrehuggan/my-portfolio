@@ -1,6 +1,6 @@
 ---
-import PostCard from './PostCard.astro';
-import { getCollection } from 'astro:content';
+import PostCard from "./PostCard.astro";
+import { getCollection } from "astro:content";
 
 interface Post {
   title: string;
@@ -10,7 +10,7 @@ interface Post {
     img: string;
   };
 }
-const posts = await getCollection('posts', ({ data }) => {
+const posts = await getCollection("posts", ({ data }) => {
   return data.published;
 });
 ---
@@ -45,7 +45,10 @@ const posts = await getCollection('posts', ({ data }) => {
     {
       posts.length > 3 && (
         <div class="mt-4">
-          <a>View More Articles</a>
+          <a
+            href="/posts"
+            class=" text-sm font-bold"
+          >{`View more articles...`}</a>
         </div>
       )
     }
