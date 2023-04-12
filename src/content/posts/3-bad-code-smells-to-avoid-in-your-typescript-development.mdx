@@ -1,0 +1,126 @@
+
+---
+title: 3 Bad Code Smells to Avoid in your TypeScript Development
+publishedDate: 2023-04-03
+published: true
+tags: [typescript, programming]
+image: { src: '/img/3-bad-code-smells', alt: '3 Bad Code Smells' }
+excerpt: re you tired of slogging through messy, hard-to-read TypeScript code? Do you find yourself scratching your head at confusing variable names or struggling to understand what a function does? Fear not, my fellow developer! 
+---
+
+Are you tired of slogging through messy, hard-to-read TypeScript code? Do you find yourself scratching your head at confusing variable names or struggling to understand what a function does? Fear not, my fellow developer! We're here to talk about the top five bad code smells you should be on the lookout for in your TypeScript code base - and how to make your codebase a happy, clean, and streamlined place to work.
+
+First up, we have the dreaded large, complex classes and functions. These behemoths of code can be a real headache to deal with - they're hard to understand, hard to maintain, and they can lead to all sorts of bugs and errors. But don't despair! There's a simple solution: break your code down into smaller, more manageable pieces. By dividing your code into smaller, more focused chunks, you'll make your code easier to read, easier to understand, and easier to maintain. Plus, your fellow developers will thank you for it!
+
+Here's an example of a large, complex function that handles authentication for a web application:
+
+```typescript
+function authenticateUser(username: string, password: string): boolean {
+  // Step 1: Validate username and password inputs
+  if (!username || !password) {
+    throw new Error('Username and password are required');
+  }
+
+  // Step 2: Query the database to get the user with the provided username
+  const user = db.query('SELECT * FROM users WHERE username = ?', username);
+
+  // Step 3: Check if the user exists
+  if (!user) {
+    throw new Error('User not found');
+  }
+
+  // Step 4: Verify the provided password matches the user's password
+  const isValidPassword = bcrypt.compareSync(password, user.password);
+
+  // Step 5: If the password is invalid, throw an error
+  if (!isValidPassword) {
+    throw new Error('Invalid password');
+  }
+
+  // Step 6: If everything checks out, return true to indicate successful authentication
+  return true;
+}
+```
+
+As you can see, this function has several steps, and it's doing a lot of different things all at once. This makes it hard to read, understand, and maintain. So, how can we break it down into smaller, more manageable pieces?
+
+One approach is to split the function into smaller, more focused functions that each have a clear responsibility. Here's an example of how we might do that:
+
+```typescript
+function authenticateUser(username: string, password: string): boolean {
+  validateInputs(username, password);
+  const user = getUserByUsername(username);
+  verifyPassword(password, user.password);
+  return true;
+}
+
+function validateInputs(username: string, password: string) {
+  if (!username || !password) {
+    throw new Error('Username and password are required');
+  }
+}
+
+function getUserByUsername(username: string) {
+  const user = db.query('SELECT * FROM users WHERE username = ?', username);
+  if (!user) {
+    throw new Error('User not found');
+  }
+  return user;
+}
+
+function verifyPassword(password: string, hash: string) {
+  const isValidPassword = bcrypt.compareSync(password, hash);
+  if (!isValidPassword) {
+    throw new Error('Invalid password');
+  }
+}
+```
+
+As you can see, we've split the original function into three smaller functions, each with a clear responsibility. `authenticateUser` now simply orchestrates the other functions, and its logic is much easier to read and understand. Plus, by breaking the code into smaller pieces, we've made it easier to test and maintain.
+
+Next on the list: overuse of any or unknown types. While these types can be useful in certain situations, they can also lead to type-related bugs and make your code harder to maintain. So, how do you avoid this code smell? Be intentional about where you use these types, and try to use more specific types whenever possible. With a little extra effort, you can make your codebase more reliable and more resilien
+
+```typescript
+function calculateTotalCost(items: unknown[]) {
+  let totalCost = 0;
+  
+  for (const item of items) {
+    if (typeof item === 'object' && item !== null) {
+      const price = (item as { price: number }).price;
+      if (typeof price === 'number' && !isNaN(price)) {
+        totalCost += price;
+      }
+    }
+  }
+  
+  return totalCost;
+}
+```
+
+This function takes an array of `unknown` items and attempts to calculate the total cost by extracting the `price` property from each object in the array. However, because the input array is of type `unknown[]`, we have to perform a lot of type checking and casting to ensure that we're working with the right data.
+
+To remedy this, we can create a more specific type that describes the shape of the objects in the input array. Here's an updated version of the function that uses a type alias:
+
+```typescript
+type Item = {
+  price: number;
+  name: string;
+  // ... other properties ...
+}
+
+function calculateTotalCost(items: Item[]) {
+  let totalCost = 0;
+  
+  for (const item of items) {
+    totalCost += item.price;
+  }
+  
+  return totalCost;
+}
+```
+
+By using a type alias to describe the shape of the `Item` objects, we can get rid of the `unknown` type and replace it with a more specific type. This makes the code easier to understand and reason about, and it helps catch errors at compile time rather than at runtime.
+
+Of course, there may be cases where using `unknown` is the appropriate choice, such as when dealing with dynamic data that can have a variety of shapes. But as a general rule, it's best to use more specific types wherever possible to make the code easier to work with.
+
+In conclusion, maintaining a clean and organized codebase is an important part of being a successful software engineer. By being aware of common code smells and taking steps to address them, you can make your codebase more maintainable, easier to read, and less prone to bugs. Remember, these are just a few examples of code smells that you might encounter in your TypeScript projects, but there are many more out there. By staying vigilant and taking the time to clean up your code, you can create software that is not only functional but also a pleasure to work with. So, happy coding!
