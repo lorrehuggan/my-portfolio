@@ -5,8 +5,8 @@ published: true
 tags: [tailwindcss, class-variance-authority, cva, css, javascript, typescript]
 image:
   {
-    src: '/img/conquering-the-tailwind-css-jungle-with-class-variance-authority.png',
-    alt: 'cvs blog imgage',
+    src: "/img/conquering-the-tailwind-css-jungle-with-class-variance-authority.png",
+    alt: "cvs blog imgage",
   }
 excerpt: As developers, we often find ourselves working with the popular Tailwind CSS framework, building visually stunning user interfaces at a rapid pace. However, as we delve into larger applications and collaborate with teams, managing class names and maintaining consistency can become increasingly challenging.
 author: Lorre Huggan
@@ -21,22 +21,22 @@ Enter Class Variance Authority (cva), a powerful library equipped with TypeScrip
 To begin, we set up the cva library and define a button component with its various variants:
 
 ```javascript
-import { cva } from 'class-variance-authority';
+import { cva } from "class-variance-authority";
 
-const button = cva(['font-semibold', 'border', 'rounded'], {
+const button = cva(["font-semibold", "border", "rounded"], {
   variants: {
     intent: {
-      primary: 'bg-blue-500 text-white border-transparent hover:bg-blue-600',
-      secondary: 'bg-white text-gray-800 border-gray-400 hover:bg-gray-100',
+      primary: "bg-blue-500 text-white border-transparent hover:bg-blue-600",
+      secondary: "bg-white text-gray-800 border-gray-400 hover:bg-gray-100",
     },
     size: {
-      small: 'text-sm py-1 px-2',
-      medium: 'text-base py-2 px-4',
+      small: "text-sm py-1 px-2",
+      medium: "text-base py-2 px-4",
     },
   },
   defaultVariants: {
-    intent: 'primary',
-    size: 'medium',
+    intent: "primary",
+    size: "medium",
   },
 });
 ```
@@ -50,7 +50,7 @@ cva empowers developers to efficiently manage Tailwind CSS class names by allowi
 For instance, we can now generate class names for our button component effortlessly:
 
 ```javascript
-button({ intent: 'secondary', size: 'small' });
+button({ intent: "secondary", size: "small" });
 // => "font-semibold border rounded bg-white text-gray-800 border-gray-400 hover:bg-gray-100 text-sm py-1 px-2"
 ```
 
