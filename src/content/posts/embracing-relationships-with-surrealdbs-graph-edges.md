@@ -8,7 +8,7 @@ image:
     src: "https://images.pexels.com/photos/11592804/pexels-photo-11592804.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     alt: "SurrelDB making databases fun again",
   }
-excerpt: SurrealDB is the next-generation serverless database that simplifies your database and API stack. Say goodbye to scaling databases, servers, load balancers, and API endpoints. SurrealDB takes the hassle out of your stack, enabling you to grow and operate at scale with a highly-available, highly-scalable distributed platform.
+excerpt: SurrealDB, a truly innovative database model, dances gracefully at the crossroads of SQL and NoSQL databases, embracing the strengths of both worlds.
 ---
 
 [Surreal DB](https://surrealdb.com/)
